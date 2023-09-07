@@ -1,0 +1,24 @@
+.navbar-main_container {
+    display: grid;
+    place-items: center left;
+    background-color: #1D2023;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 0px;
+    z-index: 40;
+   
+}
+
+.navbar-title {
+    width: fit-content;
+    height: fit-content;
+    margin-left: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ff801e;
+    font-size: 40px;
+    font-style: italic;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+}
