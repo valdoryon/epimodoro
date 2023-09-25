@@ -6,7 +6,7 @@ V0.5 notes:
     - Reworked CSS.
     - Reworked logic for the timer and chrono, setInterval()
       not working when tab not on focus. added Web Worker that
-      sends ticks every seconds/milliiseconds.
+      sends ticks every seconds/milliseconds.
 
 Currently, two official plugins are available:
 
