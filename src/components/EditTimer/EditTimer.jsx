@@ -57,49 +57,50 @@ const EditTimer = ({ handleAtZeroState, handleIsShownState, parentCallback }) =>
   }
 
   return (
-    <div className='main-edit_container'>
-      <div className='input-container'>
-        <p className='edit-text'>Horas</p>
-        <input type='text' onChange={handleHoursChange} defaultValue={0} min='0' max='24' className='edit-input' />
-        <p className='edit-text'>Minutos</p>
-        <input type='text' onChange={handleMinutesChange} defaultValue={25} min='0' max='59' className='edit-input' />
-        <p className='edit-text'>Segundos</p>
-        <input type='text' onChange={handleSecondsChange} defaultValue={0} className='edit-input' />
+    <section className='edit-wrapper'>
+      <div className='main-edit_container'>
+        <div className='input-container'>
+          <p className='edit-text'>Horas</p>
+          <input type='text' onChange={handleHoursChange} defaultValue={0} min='0' max='24' className='edit-input' />
+          <p className='edit-text'>Minutos</p>
+          <input type='text' onChange={handleMinutesChange} defaultValue={25} min='0' max='59' className='edit-input' />
+          <p className='edit-text'>Segundos</p>
+          <input type='text' onChange={handleSecondsChange} defaultValue={0} className='edit-input' />
+        </div>
 
-      </div>
+        <div className='checkbox-container'>
+          <div className='check-container'>
+            <label className='checkbox'>
+              <input
+                id='stop-at-zero'
+                defaultChecked
+                name='at-zero'
+                type='radio'
+                className='checkbox-input'
+                onChange={handleAtZeroState}
+              />
+              Parar temporizador
+            </label>
 
-      <div className='checkbox-container'>
-        <div className='check-container'>
-          <label className='checkbox'>
-            <input
-              id='stop-at-zero'
-              defaultChecked
-              name='at-zero'
-              type='radio'
-              className='checkbox-input'
-              onChange={handleAtZeroState}
-            />
-            Parar temporizador
-          </label>
+            <label className='checkbox'>
+              <input
+                id='restart-at-zero'
+                name='at-zero'
+                type='radio'
+                className='checkbox-input'
+                onChange={handleAtZeroState}
+              />
+              Reiniciar temporizador
+            </label>
+          </div>
+        </div>
 
-          <label className='checkbox'>
-            <input
-              id='restart-at-zero'
-              name='at-zero'
-              type='radio'
-              className='checkbox-input'
-              onChange={handleAtZeroState}
-            />
-            Reiniciar temporizador
-          </label>
+        <div className='buttons-container'>
+          <button className='edit-button' onClick={saveHandleClick}>Guardar</button>
+          <button className='edit-button' onClick={handleCancelClick}>Cancelar</button>
         </div>
       </div>
-
-      <div className='buttons-container'>
-        <button className='edit-button' onClick={saveHandleClick}>Guardar</button>
-        <button className='edit-button' onClick={handleCancelClick}>Cancelar</button>
-      </div>
-    </div>
+    </section>
   )
 }
 

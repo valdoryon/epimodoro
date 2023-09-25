@@ -1,14 +1,14 @@
 import React from 'react'
-import Body from '../Body/Body'
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
+import Timer from '../Timer/Timer'
 
 const Temporizador = () => {
   return (
     <>
       <Navbar />
       <Sidebar />
-      <Body />
+      <Timer />
     </>
 
   )

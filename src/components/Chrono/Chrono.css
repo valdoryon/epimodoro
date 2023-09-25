@@ -1,44 +1,41 @@
-.timer-main_container {
-    position: absolute;
+.chrono-main_container {
     display: grid;
     place-items: center;
-    width: 500px;
-    height: 300px;
+    padding: 30px;
     background-color: darkorange;
     box-shadow: -6px 6px 10px black;
     border: 2px solid #000;
     border-radius: 25px;
 }
 
-.timer-container {
+.chrono-container {
     display: grid;
     place-items: center;
-    width: 90%; 
-    height: 90%;
+    gap: 50px;
+
 }
 
-.timer-text{
-
+.chrono-text{
     display: grid;
-    place-items: center;    
-    height: 70%;
-    width: 100%;
+    place-items: center;
     color: #f96c00;
     background-color: #1D2023;
     border-radius: 15px;
     user-select: none;
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 5rem;
     text-align: center;
-
 }
 
-.timer-buttons_container {
+.chrono-buttons_container {
     display: flex;
     align-items: center;
+    width: 100%;
     justify-content: space-around;
 }
 
-.timer-button {
+.chrono-button {
     border-radius: 15px;
     border: 2px solid rgb(119, 67, 0);
     height: 50px;
@@ -50,24 +47,8 @@
     box-shadow: -2px 2px rgba(0, 0, 0, 20%);
 }
 
-
-.timer-button:hover {
+.chrono-button:hover {
     transition: 200ms;
     background-color: rgb(156, 156, 156);
 }
 
-.editTimer-hidden {
-    position: absolute;
-    display: grid;
-    place-items: center;
-    z-index: -100;
-    margin-top: 500px;
-}
-
-.editTimer-shown {
-    display: grid;
-    place-items: center;
-    position: absolute;
-    z-index: 40;
-    margin-top: 150px;
-}
