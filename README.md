@@ -1,6 +1,12 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Timer & Chronometer using HTML, CSS, React
+
+V0.5 notes:
+    - Reworked CSS.
+    - Reworked logic for the timer and chrono, setInterval()
+      not working when tab not on focus. added Web Worker that
+      sends ticks every seconds/milliiseconds.
 
 Currently, two official plugins are available:
 
