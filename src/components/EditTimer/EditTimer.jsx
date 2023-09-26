@@ -3,7 +3,7 @@ import './EditTimer.css'
 
 const EditTimer = ({ handleAtZeroState, handleIsShownState, parentCallback }) => {
   const [seconds, setSeconds] = useState(0)
-  const [minutes, setMinutes] = useState(0)
+  const [minutes, setMinutes] = useState(25)
   const [hours, setHours] = useState(0)
 
   const regex = /[^0-9]/
@@ -61,11 +61,11 @@ const EditTimer = ({ handleAtZeroState, handleIsShownState, parentCallback }) =>
       <div className='main-edit_container'>
         <div className='input-container'>
           <p className='edit-text'>Horas</p>
-          <input type='text' onChange={handleHoursChange} defaultValue={0} min='0' max='24' className='edit-input' />
+          <input type='text' onChange={handleHoursChange} value={hours} min='0' max='24' className='edit-input' />
           <p className='edit-text'>Minutos</p>
-          <input type='text' onChange={handleMinutesChange} defaultValue={25} min='0' max='59' className='edit-input' />
+          <input type='text' onChange={handleMinutesChange} value={minutes} min='0' max='59' className='edit-input' />
           <p className='edit-text'>Segundos</p>
-          <input type='text' onChange={handleSecondsChange} defaultValue={0} className='edit-input' />
+          <input type='text' onChange={handleSecondsChange} value={seconds} className='edit-input' />
         </div>
 
         <div className='checkbox-container'>

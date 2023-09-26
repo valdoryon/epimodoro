@@ -21,6 +21,10 @@ const Timer = () => {
 
   const [stopAtZero, setStopAtZero] = useState(true)
 
+  const handleStartClick = () => {
+    setIsRunning((isRunning) => !isRunning)
+  }
+
   const handleCallback = (seconds, minutes, hours) => {
     setSeconds(seconds)
     setMinutes(minutes)
@@ -50,6 +54,7 @@ const Timer = () => {
   useEffect(() => {
     if (isRunning) {
       const timeWorker = new TimerWorker() // Instancia del worker
+
       timeWorker.onmessage = (e) => {
         console.log('Timer:', e.data)
 
@@ -83,7 +88,7 @@ const Timer = () => {
             {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds}
           </h1>
           <div className='timer-buttons_container'>
-            <button onClick={() => setIsRunning((isRunning) => !isRunning)} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
+            <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
             <button onClick={() => handleResetClick()} className='timer-button'>REINICIAR</button>
             <button onClick={() => handleModifyClick()} className='timer-button'>MODIFICAR</button>
           </div>
