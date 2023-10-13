@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import './Chrono.css'
-import ChronoWorker from '../../utils/chrono-worker?worker'
+import ChronoWorker from './chrono-worker?worker'
 
 const Chrono = () => {
   // Estos estados guardan el valor del chrono para actualizarlo
@@ -32,7 +32,7 @@ const Chrono = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const timeWorker = new ChronoWorker()
+      const timeWorker = new ChronoWorker(/* webpackChunkName: "timeWorker" */ new URL('./chrono-worker.js', import.meta.url))
 
       timeWorker.onmessage = (e) => {
         setMiliSeconds((miliSeconds) => miliSeconds + 1)

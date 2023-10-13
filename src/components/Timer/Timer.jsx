@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Timer.css'
 import EditTimer from '../EditTimer/EditTimer'
-import TimerWorker from '../../utils/timer-worker?worker'
+import TimerWorker from './timer-worker?worker'
 
 const Timer = () => {
   // Estos estados guardan el valor del timer para actualizarlo
@@ -53,7 +53,7 @@ const Timer = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const timeWorker = new TimerWorker() // Instancia del worker
+      const timeWorker = new TimerWorker(/* webpackChunkName: "timeWorker" */ new URL('./timer-worker.js', import.meta.url))
 
       timeWorker.onmessage = (e) => {
         console.log('Timer:', e.data)
