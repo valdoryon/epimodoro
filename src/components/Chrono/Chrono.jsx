@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import './Chrono.css'
 import ChronoWorker from './chrono-worker?worker'
+import Navbar from '../Navbar/Navbar'
 
 const Chrono = () => {
   // Estos estados guardan el valor del chrono para actualizarlo
@@ -32,12 +33,12 @@ const Chrono = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const timeWorker = new ChronoWorker(/* webpackChunkName: "timeWorker" */ new URL('./chrono-worker.js', import.meta.url))
-
+      const timeWorker = new ChronoWorker()
+      timeWorker.postMessage('start')
       timeWorker.onmessage = (e) => {
         setMiliSeconds((miliSeconds) => miliSeconds + 1)
         if (miliSeconds >= 99) {
-          setSeconds((seconds) => seconds + e.data)
+          setSeconds((seconds) => seconds + 1)
           setMiliSeconds(0)
         } else if (seconds === 60) {
           setMinutes((minutes) => minutes + 1)
@@ -58,19 +59,22 @@ const Chrono = () => {
   }, [isRunning, seconds, minutes, hours, miliSeconds])
 
   return (
-    <section className='timer-wrapper'>
-      <div className='chrono-main_container'>
-        <div className='chrono-container'>
-          <h1 className='chrono-text'>
-            {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds + '.' + (miliSeconds < 10 ? '0' : '') + miliSeconds}
-          </h1>
-          <div className='chrono-buttons_container'>
-            <button onClick={() => handleStartClick()} className='chrono-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
-            <button onClick={() => handleResetClick()} className='chrono-button'>REINICIAR</button>
+    <>
+      <Navbar />
+      <section className='timer-wrapper'>
+        <div className='chrono-main_container'>
+          <div className='chrono-container'>
+            <h1 className='chrono-text'>
+              {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds + '.' + (miliSeconds < 10 ? '0' : '') + miliSeconds}
+            </h1>
+            <div className='chrono-buttons_container'>
+              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
+              <button onClick={() => handleResetClick()} className='timer-button'>REINICIAR</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

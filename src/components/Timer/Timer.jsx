@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Timer.css'
 import EditTimer from '../EditTimer/EditTimer'
-import TimerWorker from './timer-worker?worker'
+import TimeWorker from './timer-worker?worker'
+import Navbar from '../Navbar/Navbar'
 
 const Timer = () => {
   // Estos estados guardan el valor del timer para actualizarlo
@@ -53,13 +54,11 @@ const Timer = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const timeWorker = new TimerWorker(/* webpackChunkName: "timeWorker" */ new URL('./timer-worker.js', import.meta.url))
-
+      const timeWorker = new TimeWorker()
+      timeWorker.postMessage('start')
       timeWorker.onmessage = (e) => {
-        console.log('Timer:', e.data)
-
         if (seconds > 0) {
-          setSeconds((seconds) => seconds - e.data)
+          setSeconds((seconds) => seconds - 1)
         } else if (minutes > 0) {
           setMinutes((minutes) => minutes - 1)
           setSeconds(59)
@@ -70,33 +69,34 @@ const Timer = () => {
         }
 
         if (stopAtZero && hours === 0 && minutes === 0 && seconds === 0) {
-          setIsRunning(false)
+          handleStartClick()
         } else if (!stopAtZero && hours === 0 && minutes === 0 && seconds === 0) {
           handleResetClick()
         }
       }
-
       return () => { timeWorker.terminate() }
     }
   }, [isRunning, seconds, minutes, hours, stopAtZero])
 
   return (
-    <section className='timer-wrapper'>
-      <div className='timer-main_container'>
-        <div className='timer-container'>
-          <h1 className='timer-text'>
-            {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds}
-          </h1>
-          <div className='timer-buttons_container'>
-            <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
-            <button onClick={() => handleResetClick()} className='timer-button'>REINICIAR</button>
-            <button onClick={() => handleModifyClick()} className='timer-button'>MODIFICAR</button>
+    <>
+      <Navbar />
+      <section className='timer-wrapper'>
+        <div className='timer-main_container'>
+          <div className='timer-container'>
+            <h1 className='timer-text'>
+              {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds}
+            </h1>
+            <div className='timer-buttons_container'>
+              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
+              <button onClick={() => handleResetClick()} className='timer-button'>REINICIAR</button>
+              <button onClick={() => handleModifyClick()} className='timer-button'>MODIFICAR</button>
+            </div>
           </div>
         </div>
-      </div>
-      {isShown && <EditTimer handleAtZeroState={handleAtZeroState} handleIsShownState={handleModifyClick} parentCallback={handleCallback} />}
-    </section>
-
+        {isShown && <EditTimer handleAtZeroState={handleAtZeroState} handleIsShownState={handleModifyClick} parentCallback={handleCallback} />}
+      </section>
+    </>
   )
 }
 

@@ -1,16 +1,15 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
-import Temporizador from './components/Temporizador/Temporizador'
-import Cronometro from './components/Cronometro/Cronometro'
+import Timer from './components/Timer/Timer'
+import Chrono from './components/Chrono/Chrono'
 
 function App () {
   return (
-    <>
-      <Routes>
-        <Route path='/' element={<Navigate to='/temporizador' />} />
-        <Route path='/temporizador' element={<Temporizador />} />
-        <Route path='/cronometro' element={<Cronometro />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path='/' element={<Navigate to='/temporizador' />} />
+      <Route path='/temporizador' element={<Timer />} />
+      <Route path='/cronometro' element={<Chrono />} />
+    </Routes>
+
   )
 }
 

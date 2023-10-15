@@ -1,9 +1,13 @@
-const tick = 1
+const tick = 1000 // 1000 milliseconds (1 second)
 
 function startTimer () {
-  setInterval(() => {
-    self.postMessage(tick)
-  }, 1000)
+  const timer = setInterval(() => {
+    self.postMessage('tick')
+  }, tick)
 }
 
-startTimer()
+self.addEventListener('message', (e) => {
+  if (e.data === 'start') {
+    startTimer()
+  }
+})
