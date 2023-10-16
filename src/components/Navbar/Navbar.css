@@ -62,8 +62,51 @@
 span {
     text-align: center;
     text-decoration: none;
-    font-size: 5rem;
     color: var(--main-text-color);
     font-size: 1.2rem;
     font-family: var(--main-font);
 }
+
+@media screen and (max-width: 800px){
+    .navbar-title {
+        font-size: 2rem;
+    }
+
+}
+
+@media screen and (max-width: 500px){
+    .navbar-title {
+        font-size: 1.5rem;
+    }
+    .icon{
+        width: 25px;
+        height: 25px;
+    }
+
+    span {
+        font-size: 0.8rem;
+    }
+
+    .sidebar-elements {
+        gap: 15px;
+    } 
+}
+
+@media screen and (max-width: 400px){
+    .sidebar-elements {
+        gap: 10px;
+    }    
+ }
+ 
+ @media screen and (max-width: 300px){
+    .sidebar-elements {
+        gap: 5px;
+    }
+    .navbar-title {
+        font-size: 1.3rem;
+    }    
+    span {
+        font-size: 0.6rem;
+    }
+
+ }

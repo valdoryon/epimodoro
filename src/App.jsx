@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Timer from './components/Timer/Timer'
 import Chrono from './components/Chrono/Chrono'
 

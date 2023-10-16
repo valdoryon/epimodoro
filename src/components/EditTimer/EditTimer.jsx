@@ -6,6 +6,8 @@ const EditTimer = ({ handleAtZeroState, handleIsShownState, parentCallback }) =>
   const [minutes, setMinutes] = useState(25)
   const [hours, setHours] = useState(0)
 
+  const windowWidth = window.innerWidth
+
   const regex = /[^0-9]/
 
   function handleSecondsChange (e) {
@@ -60,11 +62,11 @@ const EditTimer = ({ handleAtZeroState, handleIsShownState, parentCallback }) =>
     <section className='edit-wrapper'>
       <div className='main-edit_container'>
         <div className='input-container'>
-          <p className='edit-text'>Horas</p>
+          <p className='edit-text'>{windowWidth < 500 ? 'Hrs' : 'Horas'}</p>
           <input type='text' onChange={handleHoursChange} value={hours} min='0' max='24' className='edit-input' />
-          <p className='edit-text'>Minutos</p>
+          <p className='edit-text'>{windowWidth < 500 ? 'Min' : 'Minutos'}</p>
           <input type='text' onChange={handleMinutesChange} value={minutes} min='0' max='59' className='edit-input' />
-          <p className='edit-text'>Segundos</p>
+          <p className='edit-text'>{windowWidth < 500 ? 'Seg' : 'Segundos'}</p>
           <input type='text' onChange={handleSecondsChange} value={seconds} className='edit-input' />
         </div>
 
