@@ -1,15 +1,19 @@
 .navbar-main_container {
+    position: absolute;
+    top: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #141618;
+    background-color: #1c1f22;
     height: 80px;
+    width: 100%;
+    z-index: 999;
 }
 
 .navbar-title {
-    font-family: 'Roboto';
-    color: #f96c00;
-    font-size: 40px;
+    font-family: var(--main-font);
+    color: var(--main-text-color);
+    font-size: 2.7rem;
     font-style: italic;
     cursor: pointer;
     text-decoration: none;
@@ -18,24 +22,27 @@
 
 .sidebar-elements {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     gap: 50px;
 }
 
 .chrono-element {
     display: grid;
     place-items: center;
+    border: 3px solid transparent;
 }
 
 .chrono-element:hover{
-    transition: ease-in-out all 200ms;
-    filter: invert();
+    transition: ease-in-out all 100ms;
+    border-bottom-color: var(--main-text-color);
 }
 
 .chrono-link {
     display: grid;
     place-items: center;
     text-decoration: none;
-        
 }
 
 .chrono-icon {
@@ -49,12 +56,14 @@
 .icon {
     width: 30px;
     height: 30px;
-    color: #f96c00;
+    color: var(--main-text-color);
 }
 
 span {
     text-align: center;
     text-decoration: none;
-    font-size: 1.1rem;
-    color: #f96c00;
+    font-size: 5rem;
+    color: var(--main-text-color);
+    font-size: 1.2rem;
+    font-family: var(--main-font);
 }

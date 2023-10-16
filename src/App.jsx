@@ -5,8 +5,7 @@ import Chrono from './components/Chrono/Chrono'
 function App () {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/temporizador' />} />
-      <Route path='/temporizador' element={<Timer />} />
+      <Route path='/' element={<Timer />} />
       <Route path='/cronometro' element={<Chrono />} />
     </Routes>
 

@@ -69,35 +69,33 @@ const EditTimer = ({ handleAtZeroState, handleIsShownState, parentCallback }) =>
         </div>
 
         <div className='checkbox-container'>
-          <div className='check-container'>
-            <label className='checkbox'>
-              <input
-                id='stop-at-zero'
-                defaultChecked
-                name='at-zero'
-                type='radio'
-                className='checkbox-input'
-                onChange={handleAtZeroState}
-              />
-              Parar temporizador
-            </label>
+          <label className='checkbox'>
+            <input
+              id='stop-at-zero'
+              defaultChecked
+              name='at-zero'
+              type='radio'
+              className='checkbox-input'
+              onChange={handleAtZeroState}
+            />
+            Parar temporizador
+          </label>
 
-            <label className='checkbox'>
-              <input
-                id='restart-at-zero'
-                name='at-zero'
-                type='radio'
-                className='checkbox-input'
-                onChange={handleAtZeroState}
-              />
-              Reiniciar temporizador
-            </label>
-          </div>
+          <label className='checkbox'>
+            <input
+              id='restart-at-zero'
+              name='at-zero'
+              type='radio'
+              className='checkbox-input'
+              onChange={handleAtZeroState}
+            />
+            Reiniciar temporizador
+          </label>
         </div>
 
         <div className='buttons-container'>
-          <button className='edit-button' onClick={saveHandleClick}>Guardar</button>
-          <button className='edit-button' onClick={handleCancelClick}>Cancelar</button>
+          <button className='timer-button' onClick={saveHandleClick}>Guardar</button>
+          <button className='timer-button' onClick={handleCancelClick}>Cancelar</button>
         </div>
       </div>
     </section>

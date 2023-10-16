@@ -1,13 +1,13 @@
 import React from 'react'
 import './Footer.css'
-
+import { RiCopyrightLine } from 'react-icons/ri'
 const Footer = () => {
   return (
-    <main className='footer-main_container'>
-      <div>
-        FOOTER
-      </div>
-    </main>
+    <footer className='footer-main_container'>
+      <span className='footer-text'>
+        Epimodoro - All Rights Reserved <RiCopyrightLine />
+      </span>
+    </footer>
   )
 }
 

@@ -1,17 +1,19 @@
 .timer-wrapper {
+    position: relative;
     display: grid;
     place-items: center;
-    height: 60vh;
-    
+    min-height: 100vh;
+    width: 100%;
 }
 
 .timer-main_container {    
     width: fit-content;
     padding: 25px;
     border-radius: 25px;
-    background-color: #f96c00;
+    
+    background: var(--main-timer-background);
     box-shadow: -6px 6px 10px black;
-    border: 2px solid #9c7a7a;
+    border: 2px solid #000;
 }
 
 .timer-container {
@@ -20,39 +22,48 @@
     gap: 30px;
 }
 
-.timer-text {    
-    color: #f96c00;
+.timer-text {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 0fr 1fr 0fr 1fr;
     background-color: #1D2023;
     border-radius: 15px;
+    padding: 0 15px;
+}
+.timer-numbers {    
+    color: var(--main-text-color);
     user-select: none;
     font-size: 5rem;
-    font-family: 'Roboto', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 0 15px;
+    font-weight: lighter;
+    font-family: var(--main-font);
+    
 }
 
 .timer-buttons_container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 50px;
 
 }
 
 .timer-button {
-    border: 2px solid rgb(119, 67, 0);    
-    border-radius: 10px;
+    background-color: var(--main-text-color);
+    border-radius: 5px;
     user-select: none;
     cursor: pointer;
-    font-weight: bold;
-    color: #1D2023;
-    box-shadow: -2px 2px rgba(0, 0, 0, 20%);
+    font-weight: 400;
+    
+    border: none;
     font-family: 'Roboto', sans-serif;
-    padding: 10px;
+    font-size: 1.2rem;
+    padding: 5px;
 }
 
 
 .timer-button:hover {
     transition: 100ms;
-    background-color: rgb(156, 156, 156);
+    background-color: rgb(44, 44, 44);
+    color: var(--main-text-color);
     
 }

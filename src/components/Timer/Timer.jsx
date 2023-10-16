@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Timer.css'
-import EditTimer from '../EditTimer/EditTimer'
 import TimeWorker from './timer-worker?worker'
-import Navbar from '../Navbar/Navbar'
+import { Navbar, EditTimer, Footer } from '../component-routes'
 
 const Timer = () => {
   // Estos estados guardan el valor del timer para actualizarlo
@@ -81,21 +80,41 @@ const Timer = () => {
   return (
     <>
       <Navbar />
+      <div className='snow' />
       <section className='timer-wrapper'>
         <div className='timer-main_container'>
           <div className='timer-container'>
-            <h1 className='timer-text'>
-              {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds}
-            </h1>
+            <div className='timer-text'>
+              <span className='timer-numbers'>
+                {(hours < 10 ? '0' : '') + hours}
+              </span>
+
+              <span className='timer-numbers'>
+                :
+              </span>
+
+              <span className='timer-numbers'>
+                {(minutes < 10 ? '0' : '') + minutes}
+              </span>
+
+              <span className='timer-numbers'>
+                :
+              </span>
+
+              <span className='timer-numbers'>
+                {(seconds < 10 ? '0' : '') + seconds}
+              </span>
+            </div>
             <div className='timer-buttons_container'>
-              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
-              <button onClick={() => handleResetClick()} className='timer-button'>REINICIAR</button>
-              <button onClick={() => handleModifyClick()} className='timer-button'>MODIFICAR</button>
+              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'Parar' : 'Iniciar'}</button>
+              <button onClick={() => handleResetClick()} className='timer-button'>Reiniciar</button>
+              <button onClick={() => handleModifyClick()} className='timer-button'>Modificar</button>
             </div>
           </div>
         </div>
         {isShown && <EditTimer handleAtZeroState={handleAtZeroState} handleIsShownState={handleModifyClick} parentCallback={handleCallback} />}
       </section>
+      <Footer />
     </>
   )
 }

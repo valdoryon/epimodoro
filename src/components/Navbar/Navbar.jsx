@@ -13,7 +13,7 @@ const Navbar = () => {
       </h1>
       <ul className='sidebar-elements'>
         <li className='chrono-element'>
-          <Link to='/temporizador' id='chrono-link' className='chrono-link'>
+          <Link to='/' id='chrono-link' className='chrono-link'>
             <i className='chrono-icon'>
               <RxTimer className='icon' />
             </i>
@@ -29,6 +29,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
+
     </header>
   )
 }

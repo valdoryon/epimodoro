@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import './Chrono.css'
 import ChronoWorker from './chrono-worker?worker'
-import Navbar from '../Navbar/Navbar'
+import { Navbar, Footer } from '../component-routes'
 
 const Chrono = () => {
   // Estos estados guardan el valor del chrono para actualizarlo
@@ -61,19 +61,27 @@ const Chrono = () => {
   return (
     <>
       <Navbar />
+      <div className='snow' />
       <section className='timer-wrapper'>
         <div className='chrono-main_container'>
           <div className='chrono-container'>
-            <h1 className='chrono-text'>
-              {(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds + '.' + (miliSeconds < 10 ? '0' : '') + miliSeconds}
-            </h1>
+            <div className='chrono-text_container'>
+              <span className='chrono-text'>{(hours < 10 ? '0' : '') + hours}</span>
+              <span className='chrono-text'>:</span>
+              <span className='chrono-text'>{(minutes < 10 ? '0' : '') + minutes}</span>
+              <span className='chrono-text'>:</span>
+              <span className='chrono-text'>{(seconds < 10 ? '0' : '') + seconds}</span>
+              <span className='chrono-text'>.</span>
+              <span className='chrono-text'>{(miliSeconds < 10 ? '0' : '') + miliSeconds}</span>
+            </div>
             <div className='chrono-buttons_container'>
-              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'PARAR' : 'INICIAR'}</button>
-              <button onClick={() => handleResetClick()} className='timer-button'>REINICIAR</button>
+              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'Parar' : 'Iniciar'}</button>
+              <button onClick={() => handleResetClick()} className='timer-button'>Reiniciar</button>
             </div>
           </div>
         </div>
       </section>
+      <Footer />
     </>
   )
 }

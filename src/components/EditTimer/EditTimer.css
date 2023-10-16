@@ -1,44 +1,42 @@
 .edit-wrapper {
     position: absolute;
+    top: 0;
     display: grid;
     place-items: center;
     backdrop-filter: blur(1px);
     background-color: rgba(55, 55, 55, 0.3);
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    z-index: 1000;
+    
 }
 
 .main-edit_container {
     display: grid;
-    place-items: center;
-    width: 400px;
-    height: 300px;
-    background-color: aliceblue;
-    border: 3px solid #1D2023 ;
-    border-radius: 15px;
-    box-shadow: 5px 5px 5px #1D2023;
+    place-items: center;    
+    background: var(--main-timer-background);
+    border: 3px solid #000000 ;
+    border-radius: 10px;
+    padding: 25px;
+    gap: 25px;
+    box-shadow: 5px 5px 5px #474747;
 }
 
 .input-container {
-    
-    width: 90%;
-    margin-top: 25px;
-    height: fit-content;
-    display: flex;
+    display: flex;  
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     
 }
 .edit-text{
-    
-    width: fit-content;
-    height: fit-content;
+    font-family: var(--main-font);
+
 }
 .edit-input {
-    
     width: 40px;
     height: 30px;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 1px black solid;
     text-align: center;
     
@@ -46,47 +44,28 @@
 
 
 .buttons-container {
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: fit-content;
-    height: 50px;
+    gap: 50px;
 
-}
-
-.edit-button {
-    border-radius: 15px;
-    height: 50px;
-    width: 100px;
-    user-select: none;
-    cursor: pointer;
-    font-weight: bold;
-    color: #1D2023;
-    box-shadow: -2px 2px rgba(0, 0, 0, 20%);
-    margin: 25px;
 }
 
 .checkbox-container {
     display: grid;
-    place-items: center;
-    padding-left: 25px;
-}
-
-.check-container {
-    display: flex;
     justify-content: center;
     align-items: center;
-    
-    width: 90%;
-    height: 90%;
-    
+
+    gap: 20px;
 }
+
+
 
 .checkbox {
     display: flex;
     align-items: center;
+    font-family: var(--main-font);
+    
 }
 
 .checkbox-input {
