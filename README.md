@@ -1,6 +1,5 @@
 # Epimodoro
-
-![Banner](![Epimodoro1](https://github.com/valdoryon/epimodoro/assets/55771543/9f453211-7960-4b35-9b28-e04d7c6fa41e))
+![Banner](https://github.com/valdoryon/epimodoro/assets/55771543/9f453211-7960-4b35-9b28-e04d7c6fa41e)
 
 ## Overview
 
@@ -19,16 +18,17 @@ Follow these steps to get your project up and running:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/valdoryon/epimodoro.git
-2. cd <your project folder>
+2. cd /your-project-folder
 
 3.  npm install
 
 ## Usage
-Timer:
+### Timer:
 
 Enter the desired time (in minutes) and click the "Start" button to begin the countdown.
 Click the "Reset" button to stop the timer and reset it to the initial time.
-Chronometer:
+
+### Chronometer:
 
 Click the "Start" button to begin the stopwatch.
 Click the "Pause" button to stop the stopwatch.
@@ -40,13 +40,20 @@ You can customize the Particles.js animation by modifying the configuration in t
 If you'd like to contribute to this project, please follow these steps:
 
 Fork the repository.
+
 Create a new branch for your feature or bug fix.
+
 Make your changes.
+
 Test your changes thoroughly.
+
 Commit your changes with descriptive commit messages.
+
 Push your changes to your forked repository.
+
 Submit a pull request to the main repository.
-License
+
+## License
 This project is licensed under the MIT License.
 
 ## Acknowledgments
