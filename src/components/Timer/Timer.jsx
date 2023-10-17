@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Timer.css'
 import TimeWorker from './timer-worker?worker'
-import { Navbar, EditTimer, Footer } from '../component-routes'
+import { Navbar, EditTimer, Footer, Snow } from '../component-routes'
 
 const Timer = () => {
   // Estos estados guardan el valor del timer para actualizarlo
@@ -80,7 +80,7 @@ const Timer = () => {
   return (
     <>
       <Navbar />
-      <div id='snow' className='snow' />
+      <Snow />
       <section className='timer-wrapper'>
         <div className='timer-main_container'>
           <div className='timer-container'>

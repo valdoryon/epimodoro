@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import './Chrono.css'
 import ChronoWorker from './chrono-worker?worker'
-import { Navbar, Footer } from '../component-routes'
+import { Navbar, Footer, Snow } from '../component-routes'
 
 const Chrono = () => {
   // Estos estados guardan el valor del chrono para actualizarlo
@@ -61,7 +61,7 @@ const Chrono = () => {
   return (
     <>
       <Navbar />
-      <div className='snow' />
+      <Snow />
       <section className='timer-wrapper'>
         <div className='chrono-main_container'>
           <div className='chrono-container'>
