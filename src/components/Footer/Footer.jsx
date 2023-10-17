@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className='footer-main_container'>
       <span className='footer-text'>
-        Epimodoro - All Rights Reserved <RiCopyrightLine />
+        Epimodoro - All Rights Reserved 2023<RiCopyrightLine />
       </span>
     </footer>
   )
