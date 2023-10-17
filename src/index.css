@@ -5,6 +5,7 @@
 
 html {
     background-image: url('/blue-mountains-background-scaled.jpeg');
+    background-position: center;
     background-size: cover;
     background-color: #2e2e2e;
     /* background-color: #f96c00; */
@@ -70,3 +71,4 @@ html, body, #root {
         transform: translateY(650px);
     }
 }
+

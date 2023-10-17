@@ -89,7 +89,7 @@ span {
 
     .sidebar-elements {
         gap: 15px;
-    } 
+    }
 }
 
 @media screen and (max-width: 400px){
