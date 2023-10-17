@@ -57,5 +57,5 @@ Submit a pull request to the main repository.
 This project is licensed under the MIT License.
 
 ## Acknowledgments
-Particles.js: https://github.com/VincentGarreau/particles.js
+React-tsparticles: https://github.com/tsparticles/react
    
