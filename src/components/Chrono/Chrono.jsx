@@ -61,7 +61,7 @@ const Chrono = () => {
   return (
     <>
       <Navbar />
-      {/*   <div className='snow' /> */}
+      <div className='snow' />
       <section className='timer-wrapper'>
         <div className='chrono-main_container'>
           <div className='chrono-container'>
