@@ -1,11 +1,10 @@
 # Epimodoro
 
+![Banner](![Epimodoro1](https://github.com/valdoryon/epimodoro/assets/55771543/9f453211-7960-4b35-9b28-e04d7c6fa41e))
+
 ## Overview
 
 This is a web application built with React and Vite that combines a timer and chronometer, adding an interactive and visually engaging element using Particles.js.
-
-![Demo](![Epimodoro1](https://github.com/valdoryon/epimodoro/assets/55771543/9f453211-7960-4b35-9b28-e04d7c6fa41e))
-
 
 ## Features
 
