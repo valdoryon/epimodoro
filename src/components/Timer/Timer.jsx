@@ -80,7 +80,7 @@ const Timer = () => {
   return (
     <>
       <Navbar />
-      <div className='snow' />
+      {/*   <div className='snow' /> */}
       <section className='timer-wrapper'>
         <div className='timer-main_container'>
           <div className='timer-container'>
