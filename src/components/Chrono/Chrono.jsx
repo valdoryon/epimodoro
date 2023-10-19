@@ -33,6 +33,12 @@ const Chrono = ({ chronoWorker }) => {
 
   useEffect(() => {
     if (isRunning) {
+      chronoWorker.postMessage(['start', hours, minutes, seconds, miliSeconds])
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isRunning) {
       chronoWorker.onmessage = (e) => {
         window.localStorage.setItem('c-h', e.data[0])
         window.localStorage.setItem('c-m', e.data[1])
