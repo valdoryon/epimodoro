@@ -9,7 +9,6 @@ let minutes
 let hours
 
 function startTimer () {
-  console.log('Timer started!')
   startTime = performance.now() - elapsedMilliseconds
   isRunning = true
   if (!myChrono) {
@@ -18,7 +17,6 @@ function startTimer () {
 }
 
 function stopTimer () {
-  console.log('Timer stopped!')
   isRunning = false
   clearInterval(myChrono)
   myChrono = null

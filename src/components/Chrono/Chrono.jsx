@@ -44,8 +44,6 @@ const Chrono = ({ chronoWorker }) => {
         setSeconds(e.data[2])
         setMiliSeconds(e.data[3])
 
-        console.log(hours, minutes, seconds, miliSeconds)
-
         if (hours === 99 && minutes === 59 && seconds === 59 && miliSeconds === 98) {
           setIsRunning(false)
           chronoWorker.postMessage(['stop', hours, minutes, seconds, miliSeconds])
