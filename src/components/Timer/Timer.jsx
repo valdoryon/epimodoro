@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './Timer.css'
-import TimeWorker from './timer-worker?worker'
 import { Navbar, EditTimer, Footer, Snow } from '../component-routes'
 
-const Timer = () => {
+const Timer = ({ timerWorker }) => {
   // Estos estados guardan el valor del timer para actualizarlo
-  const [seconds, setSeconds] = useState(0)
-  const [minutes, setMinutes] = useState(25)
-  const [hours, setHours] = useState(0)
-  const [isRunning, setIsRunning] = useState(false)
+  const [seconds, setSeconds] = useState(!window.localStorage.getItem('s') ? 0 : window.localStorage.getItem('s'))
+  const [minutes, setMinutes] = useState(!window.localStorage.getItem('m') ? 25 : window.localStorage.getItem('m'))
+  const [hours, setHours] = useState(!window.localStorage.getItem('h') ? 0 : window.localStorage.getItem('h'))
+  const [isRunning, setIsRunning] = useState(!window.localStorage.getItem('r?') ? false : window.localStorage.getItem('r?') === 'true')
 
   // Estos estados guardan el valor del timer para cuando reinicies
   // se mantenga el valor puesto dentro de la edicion
@@ -23,6 +22,22 @@ const Timer = () => {
 
   const handleStartClick = () => {
     setIsRunning((isRunning) => !isRunning)
+
+    window.localStorage.setItem('r?', !isRunning)
+
+    if (!isRunning === true) {
+      startTimer()
+    } else if (!isRunning === false) {
+      stopTimer()
+    }
+  }
+
+  const startTimer = () => {
+    timerWorker.postMessage(['start', hours, minutes, seconds])
+  }
+
+  const stopTimer = () => {
+    timerWorker.postMessage(['stop'])
   }
 
   const handleCallback = (seconds, minutes, hours) => {
@@ -34,6 +49,7 @@ const Timer = () => {
     setSavedMinutes(minutes)
     setSavedHours(hours)
 
+    timerWorker.postMessage(['start', hours, minutes, seconds])
     setIsRunning(true)
   }
 
@@ -41,6 +57,12 @@ const Timer = () => {
     setSeconds(savedSeconds)
     setMinutes(savedMinutes)
     setHours(savedHours)
+
+    window.localStorage.setItem('h', savedHours)
+    window.localStorage.setItem('m', savedMinutes)
+    window.localStorage.setItem('s', savedSeconds)
+
+    timerWorker.postMessage(['reset', savedHours, savedMinutes, savedSeconds])
   }
 
   const handleModifyClick = () => {
@@ -53,19 +75,21 @@ const Timer = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const timeWorker = new TimeWorker()
-      timeWorker.postMessage('start')
-      timeWorker.onmessage = (e) => {
-        if (seconds > 0) {
-          setSeconds((seconds) => seconds - 1)
-        } else if (minutes > 0) {
-          setMinutes((minutes) => minutes - 1)
-          setSeconds(59)
-        } else if (hours > 0) {
-          setHours((hours) => hours - 1)
-          setMinutes(59)
-          setSeconds(59)
-        }
+      timerWorker.postMessage(['start', hours, minutes, seconds])
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isRunning) {
+      timerWorker.onmessage = (e) => {
+        window.localStorage.setItem('h', e.data[1])
+        window.localStorage.setItem('m', e.data[2])
+        window.localStorage.setItem('s', e.data[3])
+
+        setHours(e.data[1])
+        setMinutes(e.data[2])
+        setSeconds(e.data[3])
+        setIsRunning(e.data[0])
 
         if (stopAtZero && hours === 0 && minutes === 0 && seconds === 0) {
           handleStartClick()
@@ -73,9 +97,8 @@ const Timer = () => {
           handleResetClick()
         }
       }
-      return () => { timeWorker.terminate() }
     }
-  }, [isRunning, seconds, minutes, hours, stopAtZero])
+  }, [isRunning, seconds, minutes, hours])
 
   return (
     <>

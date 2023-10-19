@@ -9,8 +9,7 @@
 .timer-main_container {    
     width: fit-content;
     padding: 25px;
-    border-radius: 10px;
-    
+    border-radius: 10px;    
     background: var(--main-timer-background);
     box-shadow: -6px 6px 10px black;
     border: 2px solid #000;

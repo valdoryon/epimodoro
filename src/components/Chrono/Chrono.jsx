@@ -1,60 +1,58 @@
 import React, { useEffect, useState } from 'react'
 
 import './Chrono.css'
-import ChronoWorker from './chrono-worker?worker'
 import { Navbar, Footer, Snow } from '../component-routes'
 
-const Chrono = () => {
+const Chrono = ({ chronoWorker }) => {
   // Estos estados guardan el valor del chrono para actualizarlo
-  const [miliSeconds, setMiliSeconds] = useState(0)
-  const [seconds, setSeconds] = useState(0)
-  const [minutes, setMinutes] = useState(0)
-  const [hours, setHours] = useState(0)
-  const [isRunning, setIsRunning] = useState(false)
+  const [miliSeconds, setMiliSeconds] = useState(!window.localStorage.getItem('c-ml') ? 0 : window.localStorage.getItem('c-ml'))
+  const [seconds, setSeconds] = useState(!window.localStorage.getItem('c-s') ? 0 : window.localStorage.getItem('c-s'))
+  const [minutes, setMinutes] = useState(!window.localStorage.getItem('c-m') ? 0 : window.localStorage.getItem('c-m'))
+  const [hours, setHours] = useState(!window.localStorage.getItem('c-h') ? 0 : window.localStorage.getItem('c-h'))
+  const [isRunning, setIsRunning] = useState(!window.localStorage.getItem('c-r?') ? false : window.localStorage.getItem('c-r?') === 'true')
 
   const handleResetClick = () => {
     setMiliSeconds(0)
     setSeconds(0)
     setMinutes(0)
     setHours(0)
+    chronoWorker.postMessage(['reset', hours, minutes, seconds, miliSeconds])
   }
 
   const handleStartClick = () => {
-    if (hours === 99 && minutes === 59 && seconds === 59 && miliSeconds === 99) {
-      setMiliSeconds(0)
-      setSeconds(0)
-      setMinutes(0)
-      setHours(0)
-      setIsRunning((isRunning) => !isRunning)
-    } else {
-      setIsRunning((isRunning) => !isRunning)
+    setIsRunning((isRunning) => !isRunning)
+
+    window.localStorage.setItem('c-r?', !isRunning)
+
+    if (!isRunning === true) {
+      chronoWorker.postMessage(['start', hours, minutes, seconds, miliSeconds])
+    } else if (!isRunning === false) {
+      chronoWorker.postMessage(['stop', hours, minutes, seconds, miliSeconds])
     }
   }
 
   useEffect(() => {
     if (isRunning) {
-      const timeWorker = new ChronoWorker()
-      timeWorker.postMessage('start')
-      timeWorker.onmessage = (e) => {
-        setMiliSeconds((miliSeconds) => miliSeconds + 1)
-        if (miliSeconds >= 99) {
-          setSeconds((seconds) => seconds + 1)
-          setMiliSeconds(0)
-        } else if (seconds === 60) {
-          setMinutes((minutes) => minutes + 1)
-          setSeconds(0)
-          setMiliSeconds(0)
-        } else if (minutes === 60) {
-          setHours((hours) => hours + 1)
-          setMinutes(0)
-          setSeconds(0)
-          setMiliSeconds(0)
-        }
+      chronoWorker.onmessage = (e) => {
+        window.localStorage.setItem('c-h', e.data[0])
+        window.localStorage.setItem('c-m', e.data[1])
+        window.localStorage.setItem('c-s', e.data[2])
+        window.localStorage.setItem('c-ml', e.data[3])
+
+        setHours(e.data[0])
+        setMinutes(e.data[1])
+        setSeconds(e.data[2])
+        setMiliSeconds(e.data[3])
+
+        console.log(hours, minutes, seconds, miliSeconds)
+
         if (hours === 99 && minutes === 59 && seconds === 59 && miliSeconds === 98) {
           setIsRunning(false)
+          chronoWorker.postMessage(['stop', hours, minutes, seconds, miliSeconds])
+        } else if (hours === 99 && minutes === 59 && seconds === 60) {
+          chronoWorker.postMessage(['reset'])
         }
       }
-      return () => timeWorker.terminate()
     }
   }, [isRunning, seconds, minutes, hours, miliSeconds])
 
