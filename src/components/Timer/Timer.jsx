@@ -90,6 +90,7 @@ const Timer = ({ timerWorker }) => {
         setMinutes(e.data[2])
         setSeconds(e.data[3])
         setIsRunning(e.data[0])
+        console.log(stopAtZero && hours === 0 && minutes === 0 && seconds === 0)
 
         if (stopAtZero && hours === 0 && minutes === 0 && seconds === 0) {
           handleStartClick()
@@ -112,7 +113,7 @@ const Timer = ({ timerWorker }) => {
                 {(hours < 10 ? '0' : '') + hours}
               </span>
 
-              <span className='timer-numbers'>
+              <span className='timer-num_text'>
                 :
               </span>
 
@@ -120,7 +121,7 @@ const Timer = ({ timerWorker }) => {
                 {(minutes < 10 ? '0' : '') + minutes}
               </span>
 
-              <span className='timer-numbers'>
+              <span className='timer-num_text'>
                 :
               </span>
 

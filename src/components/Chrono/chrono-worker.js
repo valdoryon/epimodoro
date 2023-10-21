@@ -22,20 +22,20 @@ function stopTimer () {
   myChrono = null
 }
 
-function resetTimer () {
+function resetTimer (hrs, min, sec, mill) {
   clearInterval(myChrono)
   myChrono = null
-  milliseconds = 0
-  seconds = 0
-  minutes = 0
-  hours = 0
+  milliseconds = mill
+  seconds = sec
+  minutes = min
+  hours = hrs
   myChrono = setInterval(updateTimer, 10)
 }
 
 function updateTimer () {
   if (isRunning) {
     milliseconds++
-    if (milliseconds >= 99) {
+    if (milliseconds > 99) {
       seconds++
       milliseconds = 0
     } else if (seconds === 60) {
@@ -62,6 +62,6 @@ addEventListener('message', (e) => {
   } else if (e.data[0] === 'stop') {
     stopTimer()
   } else if (e.data[0] === 'reset') {
-    resetTimer()
+    resetTimer(e.data[1], e.data[2], e.data[3], e.data[4])
   }
 })

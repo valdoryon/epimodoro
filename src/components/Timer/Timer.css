@@ -29,13 +29,25 @@
     border-radius: 15px;
     padding: 0 15px;
 }
+
 .timer-numbers {    
+    display: grid;
+    place-items: center;
     color: var(--main-text-color);
     user-select: none;
     font-size: 5rem;
     font-weight: lighter;
     font-family: var(--main-font);
+    width: 128px;
     
+}
+
+.timer-num_text {
+    color: var(--main-text-color);
+    user-select: none;
+    font-size: 5rem;
+    font-weight: lighter;
+    font-family: var(--main-font);
 }
 
 .timer-buttons_container {
@@ -56,7 +68,9 @@
     border: none;
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
-    padding: 5px;
+    padding: 8px 15px;
+
+    
 }
 
 
@@ -68,23 +82,49 @@
 }
 
 @media screen and (max-width: 800px){
-    .timer-numbers {
-        font-size: 4rem;
+
+    .timer-buttons_container {
+        gap: 25px;
+    }
+
+    .timer-text {
+        padding: 0 20px;
+    }
+
+    .timer-numbers{
+        font-size: 3.5rem;
+        width: 90px;
+    }
+    .timer-num_text {
+        font-size: 3.5rem;
     }    
 }
 
 @media screen and (max-width: 500px){
 
-    .timer-button {
-        font-size: 1rem;
+    .timer-container {
+        gap: 20px;
     }
 
+
+    
+    .timer-num_text {
+        font-size: 2.5rem;
+    }
+    
+    .timer-button {
+        font-size: 1rem;
+        padding: 8px;
+    }
+    
     .timer-numbers {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        width: 64px;
     }    
 
     .timer-main_container {
         padding: 15px;
+        
     }
     .timer-buttons_container {
         gap: 20px;
@@ -102,12 +142,17 @@
     .timer-container {
         gap: 15px;
     }
-
-    .timer-numbers {
-        font-size: 2.5rem;
+    
+    .timer-numbers {       
+        font-size: 2rem;
+        width: 51px;
     }
-
+    .timer-num_text {
+        font-size: 2rem;
+    }
+    
     .timer-button {
         font-size: 0.9rem;
+        padding: 5px;
     }
 }

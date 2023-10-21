@@ -15,19 +15,40 @@
 }
 
 .chrono-text_container {
-    display: grid;
-    place-items: center;
+    display: grid;    
     grid-template-columns: 1fr 0fr 1fr 0fr 1fr 0fr 1fr;
     background-color: #1D2023;
-    border-radius: 15px;
-    padding: 0px 15px;
+    border-radius: 10px;
+    padding: 0 0 0 30px;
+    gap: 5px;
 }
+
+.chrono-number{
+    display: grid;
+    place-items: center;
+    color: var( --main-text-color);
+    user-select: none;
+    font-size: 5rem;
+    font-family: 'Carter One', sans-serif;    
+    font-variant: tabular-nums;
+    width: 128px;    
+}
+
+.milli {
+    font-size: 3.5rem;
+    width: 90px;
+}
+
 
 .chrono-text{
     color: var( --main-text-color);
     user-select: none;
     font-size: 5rem;
-    font-family: 'Carter One', sans-serif;    
+    font-family: 'Carter One', sans-serif;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    
 }
 
 .chrono-buttons_container {
@@ -40,36 +61,69 @@
 
 
 @media screen and (max-width: 800px){
+    .chrono-number{
+        font-size: 3.5rem;
+        width: 90px;
+    }
     .chrono-text {
         font-size: 3.5rem;
+    }
+
+    .milli {
+        font-size: 3rem;        
     }
 
 }
 
 @media screen and (max-width: 500px){
+   .chrono-number {
+    font-size: 2.5rem;
+    width: 64px;
+   }
    .chrono-text {
     font-size: 2.5rem;
-   }
+    }
+    .milli {
+        font-size: 2rem;
+        width: 55px;        
+    }
 }
 
 @media screen and (max-width: 400px){
-    .chrono-text {
+    .chrono-number {
      font-size: 2.2rem;
+    }
+    .chrono-text {
+        font-size: 2.2rem;
+    }
+    .milli {
+        font-size: 1.8rem;
+        width: 50px;        
     }
  }
  
  @media screen and (max-width: 300px){
+    .chrono-number {
+        font-size: 2rem;
+        width: 51px;
+    }
+
     .chrono-text {
         font-size: 2rem;
     }
 
+    .milli {
+        font-size: 1.5rem;
+        width: 38.5px;
+    }
+
     .chrono-main_container {
         padding: 10px 5px;
+        
     }
 
     .chrono-container {
         gap: 10px;
-
     }
 
     .chrono-text_container {

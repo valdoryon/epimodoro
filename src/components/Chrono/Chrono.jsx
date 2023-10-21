@@ -16,6 +16,12 @@ const Chrono = ({ chronoWorker }) => {
     setSeconds(0)
     setMinutes(0)
     setHours(0)
+
+    window.localStorage.setItem('c-h', hours)
+    window.localStorage.setItem('c-m', minutes)
+    window.localStorage.setItem('c-s', seconds)
+    window.localStorage.setItem('c-ml', miliSeconds)
+
     chronoWorker.postMessage(['reset', hours, minutes, seconds, miliSeconds])
   }
 
@@ -68,17 +74,17 @@ const Chrono = ({ chronoWorker }) => {
         <div className='chrono-main_container'>
           <div className='chrono-container'>
             <div className='chrono-text_container'>
-              <span className='chrono-text'>{(hours < 10 ? '0' : '') + hours}</span>
+              <span className='chrono-number'>{(hours < 10 ? '0' : '') + hours}</span>
               <span className='chrono-text'>:</span>
-              <span className='chrono-text'>{(minutes < 10 ? '0' : '') + minutes}</span>
+              <span className='chrono-number'>{(minutes < 10 ? '0' : '') + minutes}</span>
               <span className='chrono-text'>:</span>
-              <span className='chrono-text'>{(seconds < 10 ? '0' : '') + seconds}</span>
+              <span className='chrono-number'>{(seconds < 10 ? '0' : '') + seconds}</span>
               <span className='chrono-text'>.</span>
-              <span className='chrono-text'>{(miliSeconds < 10 ? '0' : '') + miliSeconds}</span>
+              <span className='chrono-number milli'>{(miliSeconds < 10 ? '0' : '') + miliSeconds}</span>
             </div>
             <div className='chrono-buttons_container'>
               <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'Parar' : 'Iniciar'}</button>
-              <button onClick={() => handleResetClick()} className='timer-button'>Reiniciar</button>
+              <button onClick={handleResetClick} className='timer-button'>Reiniciar</button>
             </div>
           </div>
         </div>
