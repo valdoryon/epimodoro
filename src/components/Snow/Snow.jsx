@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import Particles from 'react-tsparticles'
-import './Snow.css'
 import particlesConfig from './particles-config'
 import { loadSlim } from 'tsparticles-slim'
 

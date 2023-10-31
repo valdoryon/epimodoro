@@ -12,56 +12,43 @@ const Chrono = ({ chronoWorker }) => {
   const [isRunning, setIsRunning] = useState(!window.localStorage.getItem('c-r?') ? false : window.localStorage.getItem('c-r?') === 'true')
 
   const handleResetClick = () => {
-    setMiliSeconds(0)
-    setSeconds(0)
-    setMinutes(0)
-    setHours(0)
-
-    window.localStorage.setItem('c-h', hours)
-    window.localStorage.setItem('c-m', minutes)
-    window.localStorage.setItem('c-s', seconds)
-    window.localStorage.setItem('c-ml', miliSeconds)
-
-    chronoWorker.postMessage(['reset', hours, minutes, seconds, miliSeconds])
+    chronoWorker.postMessage(['reset'])
   }
 
   const handleStartClick = () => {
     setIsRunning((isRunning) => !isRunning)
 
-    window.localStorage.setItem('c-r?', !isRunning)
-
     if (!isRunning === true) {
       chronoWorker.postMessage(['start', hours, minutes, seconds, miliSeconds])
     } else if (!isRunning === false) {
-      chronoWorker.postMessage(['stop', hours, minutes, seconds, miliSeconds])
+      chronoWorker.postMessage(['stop'])
     }
+
+    window.localStorage.setItem('c-r?', !isRunning)
   }
 
+  // Verifica si el cronometro estaba en funcionamiento segun el valor guardado en el localstorage y lo inicia acorde.
   useEffect(() => {
-    if (isRunning) {
+    if (window.localStorage.getItem('c-r?') === 'true') {
       chronoWorker.postMessage(['start', hours, minutes, seconds, miliSeconds])
     }
   }, [])
 
   useEffect(() => {
     if (isRunning) {
+      if (hours === 99 && minutes === 59 && seconds === 59 && miliSeconds === 99) {
+        handleStartClick()
+      }
       chronoWorker.onmessage = (e) => {
         window.localStorage.setItem('c-h', e.data[0])
         window.localStorage.setItem('c-m', e.data[1])
         window.localStorage.setItem('c-s', e.data[2])
         window.localStorage.setItem('c-ml', e.data[3])
-
-        setHours(e.data[0])
-        setMinutes(e.data[1])
-        setSeconds(e.data[2])
-        setMiliSeconds(e.data[3])
-
-        if (hours === 99 && minutes === 59 && seconds === 59 && miliSeconds === 98) {
-          setIsRunning(false)
-          chronoWorker.postMessage(['stop', hours, minutes, seconds, miliSeconds])
-        } else if (hours === 99 && minutes === 59 && seconds === 60) {
-          chronoWorker.postMessage(['reset'])
-        }
+        // El + es un unary operator para convertirlo en number y funcione el condicional.
+        setHours(+e.data[0])
+        setMinutes(+e.data[1])
+        setSeconds(+e.data[2])
+        setMiliSeconds(+e.data[3])
       }
     }
   }, [isRunning, seconds, minutes, hours, miliSeconds])
@@ -83,7 +70,7 @@ const Chrono = ({ chronoWorker }) => {
               <span className='chrono-number milli'>{(miliSeconds < 10 ? '0' : '') + miliSeconds}</span>
             </div>
             <div className='chrono-buttons_container'>
-              <button onClick={() => handleStartClick()} className='timer-button'>{isRunning ? 'Parar' : 'Iniciar'}</button>
+              <button onClick={handleStartClick} className='timer-button'>{isRunning ? 'Parar' : 'Iniciar'}</button>
               <button onClick={handleResetClick} className='timer-button'>Reiniciar</button>
             </div>
           </div>

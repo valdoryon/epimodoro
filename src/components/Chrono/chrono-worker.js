@@ -1,5 +1,3 @@
-let startTime
-const elapsedMilliseconds = 0
 let isRunning = false
 let myChrono
 
@@ -8,8 +6,12 @@ let seconds
 let minutes
 let hours
 
-function startTimer () {
-  startTime = performance.now() - elapsedMilliseconds
+function startTimer (hrs, min, sec, mil) {
+  milliseconds = mil
+  seconds = sec
+  minutes = min
+  hours = hrs
+
   isRunning = true
   if (!myChrono) {
     myChrono = setInterval(updateTimer, 10)
@@ -22,13 +24,13 @@ function stopTimer () {
   myChrono = null
 }
 
-function resetTimer (hrs, min, sec, mill) {
+function resetTimer () {
+  milliseconds = 0
+  seconds = 0
+  minutes = 0
+  hours = 0
   clearInterval(myChrono)
   myChrono = null
-  milliseconds = mill
-  seconds = sec
-  minutes = min
-  hours = hrs
   myChrono = setInterval(updateTimer, 10)
 }
 
@@ -54,14 +56,10 @@ function updateTimer () {
 
 addEventListener('message', (e) => {
   if (e.data[0] === 'start') {
-    milliseconds = e.data[4]
-    seconds = e.data[3]
-    minutes = e.data[2]
-    hours = e.data[1]
-    startTimer()
+    startTimer(e.data[1], e.data[2], e.data[3], e.data[4])
   } else if (e.data[0] === 'stop') {
     stopTimer()
   } else if (e.data[0] === 'reset') {
-    resetTimer(e.data[1], e.data[2], e.data[3], e.data[4])
+    resetTimer()
   }
 })
