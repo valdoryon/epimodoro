@@ -1,5 +1,5 @@
 # Epimodoro
-![Banner](https://github.com/valdoryon/epimodoro/assets/55771543/4d8f4a50-bb28-4603-87f7-a292092bf0b6)
+![Banner](https://github.com/valdoryon/epimodoro/assets/55771543/9dbeff89-56eb-4dfd-9191-7080c7910d7c)
 
 ## Overview
 
