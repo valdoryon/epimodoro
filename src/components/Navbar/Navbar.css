@@ -1,112 +1,54 @@
 .navbar-main_container {
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #1c1f22;
-    height: 80px;
-    width: 100%;
-    z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 70px;
 }
 
 .navbar-title {
-    font-family: var(--main-font);
-    color: var(--main-text-color);
-    font-size: 2.7rem;
-    font-style: italic;
-    cursor: pointer;
-    text-decoration: none;
-    user-select: none;
+  font-family: var(--main-font);
+  color: var(--main-text-color);
+  font-size: clamp(1.5rem, 2vw, 10vw);
+  font-style: italic;
+  text-decoration: none;
+  user-select: none;
 }
 
 .sidebar-elements {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .chrono-element {
-    display: grid;
-    place-items: center;
-    border: 3px solid transparent;
+  display: grid;
+  place-items: center;
+  border: 3px solid transparent;
 }
 
-.chrono-element:hover{
-    transition: ease-in-out all 100ms;
-    border-bottom-color: var(--main-text-color);
+.chrono-element:hover {
+  transition: all 100ms ease-in-out;
+  border-bottom-color: var(--main-text-color);
 }
 
 .chrono-link {
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-}
-
-.chrono-icon {
-    display: grid;
-    place-items: center;
-    padding-top: 5px;
-    width: 40px;
-    height: 40px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
-    color: var(--main-text-color);
+  width: 25px;
+  height: 25px;
+  color: var(--main-text-color);
 }
 
 span {
-    text-align: center;
-    text-decoration: none;
-    color: var(--main-text-color);
-    font-size: 1.2rem;
-    font-family: var(--main-font);
+  font-family: var(--main-font);
+  text-align: center;
+  text-decoration: none;
+  color: var(--main-text-color);
+  font-size: clamp(0.7rem, 1vw, 2vw);
 }
-
-@media screen and (max-width: 800px){
-    .navbar-title {
-        font-size: 2rem;
-    }
-
-}
-
-@media screen and (max-width: 500px){
-    .navbar-title {
-        font-size: 1.5rem;
-    }
-    .icon{
-        width: 25px;
-        height: 25px;
-    }
-
-    span {
-        font-size: 0.8rem;
-    }
-
-    .sidebar-elements {
-        gap: 15px;
-    }
-}
-
-@media screen and (max-width: 400px){
-    .sidebar-elements {
-        gap: 10px;
-    }    
- }
- 
- @media screen and (max-width: 300px){
-    .sidebar-elements {
-        gap: 5px;
-    }
-    .navbar-title {
-        font-size: 1.3rem;
-    }    
-    span {
-        font-size: 0.6rem;
-    }
-
- }
