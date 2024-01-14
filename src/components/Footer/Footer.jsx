@@ -1,4 +1,5 @@
 import { RiCopyrightLine } from 'react-icons/ri';
+import './Footer.css';
 
 const Footer = () => {
   return (
