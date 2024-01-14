@@ -8,7 +8,7 @@ const Navbar = () => {
       <h1 className='navbar-title'>Epimodoro</h1>
       <ul className='sidebar-elements'>
         <li className='chrono-element'>
-          <Link to='/' id='chrono-link' className='chrono-link'>
+          <Link to='/' id='timer-link' className='chrono-link'>
             <img src='/timer-icon.svg' className='icon' alt='timer icon' />
             <span>Temporizador</span>
           </Link>
